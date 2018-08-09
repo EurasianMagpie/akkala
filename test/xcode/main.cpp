@@ -5,9 +5,8 @@
 
 int main(int argc, const char * argv[]) {
     
-    sp<TestThrd> spThrd = new TestThrd();
-    spThrd->run();
-    spThrd->join();
+    testCountInt();
+    //testCountAtomic();
     
     return 0;
 }

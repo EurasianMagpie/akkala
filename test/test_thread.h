@@ -29,7 +29,7 @@ using namespace android;
 class TestThrd : virtual public Thread
 {
 public:
-    TestThrd() : m_counter(0)
+    TestThrd(bool testAtomic) : m_counter(0), m_test_atomic(testAtomic)
     {}
 
     virtual ~TestThrd()
@@ -38,7 +38,32 @@ public:
 protected:
     virtual bool threadLoop()
     {
+        if (m_test_atomic)
+        {
+            return test_atomic_int();
+        }
+        else
+        {
+            return test_int();
+        }
+    }
+    
+    bool test_int()
+    {
         if (m_counter > 1000000)
+        {
+            xlog("ab", "TestThrd::threadLoop end | ref:%d\n", s_n_ref);
+            return false;
+        }
+        m_counter++;
+        s_n_ref++;
+        xlog("ab", "TestThrd::threadLoop ... | ref:%d\n", s_n_ref);
+        return true;
+    }
+    
+    bool test_atomic_int()
+    {
+        if (m_counter == 1000000)
         {
             int r = atomic_load(&s_ref);
             xlog("ab", "TestThrd::threadLoop end | ref:%d\n", r);
@@ -46,20 +71,20 @@ protected:
         }
         m_counter++;
         int r = atomic_fetch_add(&s_ref, 1);
-        xlog("ab", "TestThrd::threadLoop ... | ref:%d\n", r);//*/
-
-        //xlog("ab", "TestThrd::threadLoop ... \n");
-        
+        xlog("ab", "TestThrd::threadLoop ... | ref:%d\n", r);
         return true;
     }
 
 public:
+    static volatile int s_n_ref;
     static atomic_int s_ref;
 protected:
+    bool m_test_atomic;
     int m_counter;
 };
 
-//static 
+//static
+volatile int TestThrd::s_n_ref = 0;
 atomic_int TestThrd::s_ref = 0;
 
 class TestThrdMgr
@@ -67,14 +92,9 @@ class TestThrdMgr
 public:
     TestThrdMgr()
     {
-        //m_thrds = new sp<Thread>[2];
     }
     virtual ~TestThrdMgr()
     {
-        /*if (m_thrds)
-        {
-            delete[] m_thrds;
-        }//*/
     }
 
 public:
@@ -85,13 +105,13 @@ public:
     }
 
 public:
-    void start(int idx)
+    void start(int idx, bool _atomic)
     {
         if (idx >= 0 && idx < 2)
         {
             if (m_thrds[idx] == NULL)
             {
-                m_thrds[idx] = new TestThrd();
+                m_thrds[idx] = new TestThrd(_atomic);
             }
             if (m_thrds[idx] != NULL)
             {
@@ -110,6 +130,17 @@ public:
             }
         }
     }
+    
+    void join()
+    {
+        int sz = sizeof(m_thrds) / sizeof(m_thrds[0]);
+        for (int i=0; i<sz; i++) {
+            if (m_thrds[i] != NULL)
+            {
+                m_thrds[i]->join();
+            }
+        }
+    }
 
 private:
     sp<Thread> m_thrds[2];
@@ -119,16 +150,18 @@ private:
 #define _testMgr TestThrdMgr::instance()
 #endif
 
-void testStart()
+void testCountInt()
 {
-    _testMgr.start(0);
-    //_testMgr.start(1);
+    _testMgr.start(0, false);
+    _testMgr.start(1, false);
+    _testMgr.join();
 }
 
-void testStop()
+void testCountAtomic()
 {
-    _testMgr.stop(0);
-    //_testMgr.stop(1);
+    _testMgr.start(0, true);
+    _testMgr.start(1, true);
+    _testMgr.join();
 }
 
 #endif//_____test_thread_h_____
