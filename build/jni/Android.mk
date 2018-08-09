@@ -6,7 +6,7 @@ _INC := $(_ROOT)/include
 _SRC := $(_ROOT)/src
 _SRC_CORE := $(_ROOT)/src/core
 _SRC_UTILS := $(_ROOT)/src/utils
-_TEST := $(_ROOT)/test
+_TEST := $(_ROOT)/test/jni
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := ab

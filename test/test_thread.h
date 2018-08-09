@@ -9,7 +9,6 @@
 
 #ifdef __ANDROID__
 
-#include <jni.h>
 #include <android/log.h>
 #ifndef xlog
 #define xlog(tag, ...)  __android_log_print(ANDROID_LOG_ERROR, tag, __VA_ARGS__)
@@ -52,12 +51,12 @@ protected:
     {
         if (m_counter > 1000000)
         {
-            xlog("ab", "TestThrd::threadLoop end | ref:%d\n", s_n_ref);
+            xlog("ab", "TestThrd::threadLoop<int> end | ref:%d\n", s_n_ref);
             return false;
         }
         m_counter++;
         s_n_ref++;
-        xlog("ab", "TestThrd::threadLoop ... | ref:%d\n", s_n_ref);
+        //xlog("ab", "TestThrd::threadLoop ... | ref:%d\n", s_n_ref);
         return true;
     }
     
@@ -66,12 +65,12 @@ protected:
         if (m_counter == 1000000)
         {
             int r = atomic_load(&s_ref);
-            xlog("ab", "TestThrd::threadLoop end | ref:%d\n", r);
+            xlog("ab", "TestThrd::threadLoop<atomic> end | ref:%d\n", r);
             return false;
         }
         m_counter++;
         int r = atomic_fetch_add(&s_ref, 1);
-        xlog("ab", "TestThrd::threadLoop ... | ref:%d\n", r);
+        //xlog("ab", "TestThrd::threadLoop ... | ref:%d\n", r);
         return true;
     }
 
@@ -120,13 +119,14 @@ public:
         }
     }
 
-    void stop(int idx)
+    void stopAndClear(int idx)
     {
         if (idx >= 0 && idx < 2)
         {
             if (m_thrds[idx] != NULL)
             {
                 m_thrds[idx]->requestExit();
+                m_thrds[idx].clear();
             }
         }
     }
@@ -162,6 +162,18 @@ void testCountAtomic()
     _testMgr.start(0, true);
     _testMgr.start(1, true);
     _testMgr.join();
+}
+
+void testCountStart(bool testAtomic)
+{
+    _testMgr.start(0, testAtomic);
+    _testMgr.start(1, testAtomic);
+}
+
+void testCountStop()
+{
+    _testMgr.stopAndClear(0);
+    _testMgr.stopAndClear(1);
 }
 
 #endif//_____test_thread_h_____

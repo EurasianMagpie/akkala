@@ -28,6 +28,12 @@
     <Filter Include="src\utils">
       <UniqueIdentifier>{b44a6ecc-3147-44be-afb8-1d89347c41e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="test\jni">
+      <UniqueIdentifier>{c2157c7b-b933-46f7-96af-f7b0012200e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="test\xcode">
+      <UniqueIdentifier>{5a7fd4ed-859b-4cf4-ad5f-13ac578043d5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\include\core\threads.h">
@@ -84,11 +90,11 @@
     <ClInclude Include="..\..\include\utils\StrongPointer.h">
       <Filter>include\utils</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\test\test_thread.h">
+      <Filter>test</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\test\test_std_atomic.cpp">
-      <Filter>test</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\core\threads.c">
       <Filter>src\core</Filter>
     </ClCompile>
@@ -113,8 +119,11 @@
     <ClCompile Include="..\..\src\core\uio.c">
       <Filter>src\core</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\test\test_thread.cpp">
-      <Filter>test</Filter>
+    <ClCompile Include="..\..\test\xcode\main.cpp">
+      <Filter>test\xcode</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\test\jni\test_thread.cpp">
+      <Filter>test\jni</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

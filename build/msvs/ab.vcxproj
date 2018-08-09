@@ -128,6 +128,7 @@
     <ClInclude Include="..\..\include\utils\ThreadDefs.h" />
     <ClInclude Include="..\..\include\utils\threads.h" />
     <ClInclude Include="..\..\include\utils\Timers.h" />
+    <ClInclude Include="..\..\test\test_thread.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\core\properties.c" />
@@ -138,8 +139,8 @@
     <ClCompile Include="..\..\src\utils\RefBase.cpp" />
     <ClCompile Include="..\..\src\utils\Threads.cpp" />
     <ClCompile Include="..\..\src\utils\Timers.cpp" />
-    <ClCompile Include="..\..\test\test_std_atomic.cpp" />
-    <ClCompile Include="..\..\test\test_thread.cpp" />
+    <ClCompile Include="..\..\test\jni\test_thread.cpp" />
+    <ClCompile Include="..\..\test\xcode\main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\jni\Android.mk" />
