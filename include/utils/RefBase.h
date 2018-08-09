@@ -150,9 +150,11 @@ class LightRefBase
 public:
     inline LightRefBase() : mCount(0) { }
     inline void incStrong(const void* id) const {
+        //android_atomic_inc(&mCount);
         atomic_fetch_add(&mCount, 1);
     }
     inline void decStrong(const void* id) const {
+        //if (android_atomic_dec(&mCount) == 1) {
         if (atomic_fetch_add(&mCount, -1) == 1) {
             delete static_cast<const T*>(this);
         }

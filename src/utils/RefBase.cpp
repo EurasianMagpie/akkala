@@ -319,6 +319,7 @@ void RefBase::incStrong(const void* id) const
     refs->incWeak(id);
 
     refs->addStrongRef(id);
+    //const int32_t c = android_atomic_inc(&refs->mStrong);
     const int32_t c = atomic_fetch_add(&refs->mStrong, 1);
     ALOG_ASSERT(c > 0, "incStrong() called on %p after last strong ref", refs);
 #if PRINT_REFS
@@ -328,6 +329,7 @@ void RefBase::incStrong(const void* id) const
         return;
     }
 
+    //android_atomic_add(-INITIAL_STRONG_VALUE, &refs->mStrong);
     atomic_fetch_add(&refs->mStrong, -INITIAL_STRONG_VALUE);
     refs->mBase->onFirstRef();
 }
@@ -336,6 +338,7 @@ void RefBase::decStrong(const void* id) const
 {
     weakref_impl* const refs = mRefs;
     refs->removeStrongRef(id);
+    //const int32_t c = android_atomic_dec(&refs->mStrong);
     const int32_t c = atomic_fetch_add(&refs->mStrong, -1);
 #if PRINT_REFS
     ALOGD("decStrong of %p from %p: cnt=%d\n", this, id, c);
@@ -356,6 +359,7 @@ void RefBase::forceIncStrong(const void* id) const
     refs->incWeak(id);
 
     refs->addStrongRef(id);
+    //const int32_t c = android_atomic_inc(&refs->mStrong);
     const int32_t c = atomic_fetch_add(&refs->mStrong, 1);
     ALOG_ASSERT(c >= 0, "forceIncStrong called on %p after ref count underflow",
         refs);
@@ -365,6 +369,7 @@ void RefBase::forceIncStrong(const void* id) const
 
     switch (c) {
     case INITIAL_STRONG_VALUE:
+        //android_atomic_add(-INITIAL_STRONG_VALUE, &refs->mStrong);
         atomic_fetch_add(&refs->mStrong, -INITIAL_STRONG_VALUE);
         // fall through...
     case 0:
@@ -386,6 +391,7 @@ void RefBase::weakref_type::incWeak(const void* id)
 {
     weakref_impl* const impl = static_cast<weakref_impl*>(this);
     impl->addWeakRef(id);
+    //const int32_t c = android_atomic_inc(&impl->mWeak);
     const int32_t c = atomic_fetch_add(&impl->mWeak, 1);
     ALOG_ASSERT(c >= 0, "incWeak called on %p after last weak ref", this);
 }
@@ -395,6 +401,7 @@ void RefBase::weakref_type::decWeak(const void* id)
 {
     weakref_impl* const impl = static_cast<weakref_impl*>(this);
     impl->removeWeakRef(id);
+    //const int32_t c = android_atomic_dec(&impl->mWeak);
     const int32_t c = atomic_fetch_add(&impl->mWeak, -1);
     ALOG_ASSERT(c >= 1, "decWeak called on %p too many times", this);
     if (c != 1) return;
@@ -435,7 +442,8 @@ bool RefBase::weakref_type::attemptIncStrong(const void* id)
     ALOG_ASSERT(curCount >= 0, "attemptIncStrong called on %p after underflow",
         this);
     while (curCount > 0 && curCount != INITIAL_STRONG_VALUE) {
-        if (atomic_compare_exchange_strong(&impl->mStrong, &curCount, curCount + 1) == 0) {
+        //if (android_atomic_cmpxchg(curCount, curCount+1, &impl->mStrong) == 0) {
+        if (atomic_compare_exchange_strong(&impl->mStrong, &curCount, curCount + 1)) {
             break;
         }
         curCount = impl->mStrong;
@@ -463,6 +471,7 @@ bool RefBase::weakref_type::attemptIncStrong(const void* id)
             decWeak(id);
             return false;
         }
+        //curCount = android_atomic_inc(&impl->mStrong);
         curCount = atomic_fetch_add(&impl->mStrong, 1);
 
         // If the strong reference count has already been incremented by
@@ -482,6 +491,7 @@ bool RefBase::weakref_type::attemptIncStrong(const void* id)
 #endif
 
     if (curCount == INITIAL_STRONG_VALUE) {
+        //android_atomic_add(-INITIAL_STRONG_VALUE, &impl->mStrong);
         atomic_fetch_add(&impl->mStrong, -INITIAL_STRONG_VALUE);
         impl->mBase->onFirstRef();
     }
@@ -497,7 +507,8 @@ bool RefBase::weakref_type::attemptIncWeak(const void* id)
     ALOG_ASSERT(curCount >= 0, "attemptIncWeak called on %p after underflow",
         this);
     while (curCount > 0) {
-        if (atomic_compare_exchange_strong(&impl->mWeak, &curCount, curCount + 1) == 0) {
+        //if (android_atomic_cmpxchg(curCount, curCount+1, &impl->mWeak) == 0) {
+        if (atomic_compare_exchange_strong(&impl->mWeak, &curCount, curCount + 1)) {
             break;
         }
         curCount = impl->mWeak;
@@ -565,6 +576,7 @@ RefBase::~RefBase()
 
 void RefBase::extendObjectLifetime(int32_t mode)
 {
+    //android_atomic_or(mode, &mRefs->mFlags);
     atomic_fetch_or(&mRefs->mFlags, mode);
 }
 
