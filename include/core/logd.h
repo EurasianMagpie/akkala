@@ -17,10 +17,14 @@
 #ifndef _ANDROID_CUTILS_LOGD_H
 #define _ANDROID_CUTILS_LOGD_H
 
+#ifdef __ANDROID__
 /* the stable/frozen log-related definitions have been
  * moved to this header, which is exposed by the NDK
  */
 #include <android/log.h>
+#else
+#include <core/logd_etc.h>
+#endif
 
 /* the rest is only used internally by the system */
 #include <time.h>
