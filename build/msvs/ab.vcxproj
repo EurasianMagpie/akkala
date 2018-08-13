@@ -155,6 +155,7 @@
     <ClCompile Include="..\..\src\cutils\uio.c" />
     <ClCompile Include="..\..\src\foundation\AAtomizer.cpp" />
     <ClCompile Include="..\..\src\foundation\ABuffer.cpp" />
+    <ClCompile Include="..\..\src\foundation\AHandler.cpp" />
     <ClCompile Include="..\..\src\foundation\ALooper.cpp" />
     <ClCompile Include="..\..\src\foundation\ALooperRoster.cpp" />
     <ClCompile Include="..\..\src\foundation\AMessage.cpp" />

@@ -212,6 +212,9 @@
     <ClCompile Include="..\..\src\cutils\uio.c">
       <Filter>src\cutils</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\src\foundation\AHandler.cpp">
+      <Filter>src\foundation</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\jni\Android.mk">
