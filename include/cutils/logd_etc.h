@@ -27,6 +27,10 @@ extern "C" {
 #define __android_log_print(lvl, tag, ...) printf(__VA_ARGS__)
 #endif
     
+#ifndef __android_log_assert
+#define __android_log_assert(...) sizeof(__VA_ARGS__)
+#endif
+    
 #ifdef __cplusplus
 }
 #endif
