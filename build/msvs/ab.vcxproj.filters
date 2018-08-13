@@ -16,12 +16,6 @@
     <Filter Include="test">
       <UniqueIdentifier>{3379c814-04a5-4449-a7ae-362ae3fce194}</UniqueIdentifier>
     </Filter>
-    <Filter Include="include\core">
-      <UniqueIdentifier>{5f9bb170-6d5d-4090-ba44-6bc150c26b5e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="src\core">
-      <UniqueIdentifier>{67579351-5af2-4158-90c7-df9f37ece0a9}</UniqueIdentifier>
-    </Filter>
     <Filter Include="include\utils">
       <UniqueIdentifier>{a3eea7f9-2856-446d-ac62-0e956015ee96}</UniqueIdentifier>
     </Filter>
@@ -40,11 +34,14 @@
     <Filter Include="src\foundation">
       <UniqueIdentifier>{cb86d320-afc4-47cb-85f6-a2c4ec2d2899}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include\cutils">
+      <UniqueIdentifier>{5f9bb170-6d5d-4090-ba44-6bc150c26b5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\cutils">
+      <UniqueIdentifier>{67579351-5af2-4158-90c7-df9f37ece0a9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\core\threads.h">
-      <Filter>include\core</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\include\utils\Condition.h">
       <Filter>include\utils</Filter>
     </ClInclude>
@@ -77,21 +74,6 @@
     </ClInclude>
     <ClInclude Include="..\..\include\utils\Log.h">
       <Filter>include\utils</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\core\log.h">
-      <Filter>include\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\core\uio.h">
-      <Filter>include\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\core\logd.h">
-      <Filter>include\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\core\properties.h">
-      <Filter>include\core</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\include\core\sched_policy.h">
-      <Filter>include\core</Filter>
     </ClInclude>
     <ClInclude Include="..\..\include\utils\StrongPointer.h">
       <Filter>include\utils</Filter>
@@ -150,11 +132,29 @@
     <ClInclude Include="..\..\include\foundation\ABuffer.h">
       <Filter>include\foundation</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\include\cutils\log.h">
+      <Filter>include\cutils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\cutils\logd.h">
+      <Filter>include\cutils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\cutils\logd_etc.h">
+      <Filter>include\cutils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\cutils\properties.h">
+      <Filter>include\cutils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\cutils\sched_policy.h">
+      <Filter>include\cutils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\cutils\threads.h">
+      <Filter>include\cutils</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\cutils\uio.h">
+      <Filter>include\cutils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\core\threads.c">
-      <Filter>src\core</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\src\utils\RefBase.cpp">
       <Filter>src\utils</Filter>
     </ClCompile>
@@ -166,15 +166,6 @@
     </ClCompile>
     <ClCompile Include="..\..\src\utils\Log.cpp">
       <Filter>src\utils</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\core\properties.c">
-      <Filter>src\core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\core\sched_policy.c">
-      <Filter>src\core</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\src\core\uio.c">
-      <Filter>src\core</Filter>
     </ClCompile>
     <ClCompile Include="..\..\test\xcode\main.cpp">
       <Filter>test\xcode</Filter>
@@ -199,6 +190,27 @@
     </ClCompile>
     <ClCompile Include="..\..\src\foundation\AMessage.cpp">
       <Filter>src\foundation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\ABuffer.cpp">
+      <Filter>src\foundation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\AAtomizer.cpp">
+      <Filter>src\foundation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\foundation\hexdump.cpp">
+      <Filter>src\foundation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cutils\properties.c">
+      <Filter>src\cutils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cutils\sched_policy.c">
+      <Filter>src\cutils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cutils\threads.c">
+      <Filter>src\cutils</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\cutils\uio.c">
+      <Filter>src\cutils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

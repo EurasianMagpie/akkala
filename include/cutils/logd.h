@@ -23,7 +23,7 @@
  */
 #include <android/log.h>
 #else
-#include <core/logd_etc.h>
+#include <cutils/logd_etc.h>
 #endif
 
 /* the rest is only used internally by the system */
@@ -35,7 +35,7 @@
 #ifdef HAVE_PTHREADS
 #include <pthread.h>
 #endif
-#include <core/uio.h>
+#include <cutils/uio.h>
 #include <stdarg.h>
 
 #ifdef __cplusplus

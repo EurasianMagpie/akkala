@@ -20,7 +20,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-#include <core/log.h>
+#include <cutils/log.h>
 
 #include <utils/Errors.h>
 #include <utils/SharedBuffer.h>

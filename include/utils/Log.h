@@ -28,7 +28,7 @@
 #ifndef _LIBS_UTILS_LOG_H
 #define _LIBS_UTILS_LOG_H
 
-#include <core/log.h>
+#include <cutils/log.h>
 #include <sys/types.h>
 
 #ifdef __cplusplus

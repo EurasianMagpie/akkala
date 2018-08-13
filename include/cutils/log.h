@@ -37,8 +37,8 @@
 #endif
 #include <stdarg.h>
 
-#include <core/uio.h>
-#include <core/logd.h>
+#include <cutils/uio.h>
+#include <cutils/logd.h>
 
 #ifdef __cplusplus
 extern "C" {

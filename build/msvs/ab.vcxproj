@@ -110,12 +110,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\include\core\log.h" />
-    <ClInclude Include="..\..\include\core\logd.h" />
-    <ClInclude Include="..\..\include\core\properties.h" />
-    <ClInclude Include="..\..\include\core\sched_policy.h" />
-    <ClInclude Include="..\..\include\core\threads.h" />
-    <ClInclude Include="..\..\include\core\uio.h" />
+    <ClInclude Include="..\..\include\cutils\log.h" />
+    <ClInclude Include="..\..\include\cutils\logd.h" />
+    <ClInclude Include="..\..\include\cutils\logd_etc.h" />
+    <ClInclude Include="..\..\include\cutils\properties.h" />
+    <ClInclude Include="..\..\include\cutils\sched_policy.h" />
+    <ClInclude Include="..\..\include\cutils\threads.h" />
+    <ClInclude Include="..\..\include\cutils\uio.h" />
     <ClInclude Include="..\..\include\foundation\AAtomizer.h" />
     <ClInclude Include="..\..\include\foundation\ABase.h" />
     <ClInclude Include="..\..\include\foundation\ABuffer.h" />
@@ -148,14 +149,17 @@
     <ClInclude Include="..\..\test\test_thread.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\src\core\properties.c" />
-    <ClCompile Include="..\..\src\core\sched_policy.c" />
-    <ClCompile Include="..\..\src\core\threads.c" />
-    <ClCompile Include="..\..\src\core\uio.c" />
+    <ClCompile Include="..\..\src\cutils\properties.c" />
+    <ClCompile Include="..\..\src\cutils\sched_policy.c" />
+    <ClCompile Include="..\..\src\cutils\threads.c" />
+    <ClCompile Include="..\..\src\cutils\uio.c" />
+    <ClCompile Include="..\..\src\foundation\AAtomizer.cpp" />
+    <ClCompile Include="..\..\src\foundation\ABuffer.cpp" />
     <ClCompile Include="..\..\src\foundation\ALooper.cpp" />
     <ClCompile Include="..\..\src\foundation\ALooperRoster.cpp" />
     <ClCompile Include="..\..\src\foundation\AMessage.cpp" />
     <ClCompile Include="..\..\src\foundation\AString.cpp" />
+    <ClCompile Include="..\..\src\foundation\hexdump.cpp" />
     <ClCompile Include="..\..\src\utils\Log.cpp" />
     <ClCompile Include="..\..\src\utils\RefBase.cpp" />
     <ClCompile Include="..\..\src\utils\SharedBuffer.cpp" />

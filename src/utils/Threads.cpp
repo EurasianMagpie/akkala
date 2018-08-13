@@ -20,8 +20,8 @@
 #include <utils/threads.h>
 #include <utils/Log.h>
 
-#include <core/sched_policy.h>
-#include <core/properties.h>
+#include <cutils/sched_policy.h>
+#include <cutils/properties.h>
 
 #include <stdio.h>
 #include <stdlib.h>
