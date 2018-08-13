@@ -116,18 +116,35 @@
     <ClInclude Include="..\..\include\core\sched_policy.h" />
     <ClInclude Include="..\..\include\core\threads.h" />
     <ClInclude Include="..\..\include\core\uio.h" />
+    <ClInclude Include="..\..\include\foundation\AAtomizer.h" />
+    <ClInclude Include="..\..\include\foundation\ABase.h" />
+    <ClInclude Include="..\..\include\foundation\ABuffer.h" />
+    <ClInclude Include="..\..\include\foundation\ADebug.h" />
+    <ClInclude Include="..\..\include\foundation\AHandler.h" />
+    <ClInclude Include="..\..\include\foundation\ALooper.h" />
+    <ClInclude Include="..\..\include\foundation\ALooperRoster.h" />
+    <ClInclude Include="..\..\include\foundation\AMessage.h" />
+    <ClInclude Include="..\..\include\foundation\AString.h" />
+    <ClInclude Include="..\..\include\foundation\hexdump.h" />
     <ClInclude Include="..\..\include\utils\AndroidThreads.h" />
     <ClInclude Include="..\..\include\utils\Condition.h" />
     <ClInclude Include="..\..\include\utils\Errors.h" />
+    <ClInclude Include="..\..\include\utils\KeyedVector.h" />
+    <ClInclude Include="..\..\include\utils\List.h" />
     <ClInclude Include="..\..\include\utils\Log.h" />
     <ClInclude Include="..\..\include\utils\Mutex.h" />
     <ClInclude Include="..\..\include\utils\RefBase.h" />
     <ClInclude Include="..\..\include\utils\RWLock.h" />
+    <ClInclude Include="..\..\include\utils\SharedBuffer.h" />
+    <ClInclude Include="..\..\include\utils\SortedVector.h" />
     <ClInclude Include="..\..\include\utils\StrongPointer.h" />
     <ClInclude Include="..\..\include\utils\Thread.h" />
     <ClInclude Include="..\..\include\utils\ThreadDefs.h" />
     <ClInclude Include="..\..\include\utils\threads.h" />
     <ClInclude Include="..\..\include\utils\Timers.h" />
+    <ClInclude Include="..\..\include\utils\TypeHelpers.h" />
+    <ClInclude Include="..\..\include\utils\Vector.h" />
+    <ClInclude Include="..\..\include\utils\VectorImpl.h" />
     <ClInclude Include="..\..\test\test_thread.h" />
   </ItemGroup>
   <ItemGroup>
@@ -135,10 +152,16 @@
     <ClCompile Include="..\..\src\core\sched_policy.c" />
     <ClCompile Include="..\..\src\core\threads.c" />
     <ClCompile Include="..\..\src\core\uio.c" />
+    <ClCompile Include="..\..\src\foundation\ALooper.cpp" />
+    <ClCompile Include="..\..\src\foundation\ALooperRoster.cpp" />
+    <ClCompile Include="..\..\src\foundation\AMessage.cpp" />
+    <ClCompile Include="..\..\src\foundation\AString.cpp" />
     <ClCompile Include="..\..\src\utils\Log.cpp" />
     <ClCompile Include="..\..\src\utils\RefBase.cpp" />
+    <ClCompile Include="..\..\src\utils\SharedBuffer.cpp" />
     <ClCompile Include="..\..\src\utils\Threads.cpp" />
     <ClCompile Include="..\..\src\utils\Timers.cpp" />
+    <ClCompile Include="..\..\src\utils\VectorImpl.cpp" />
     <ClCompile Include="..\..\test\jni\test_thread.cpp" />
     <ClCompile Include="..\..\test\xcode\main.cpp" />
   </ItemGroup>
