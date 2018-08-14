@@ -133,6 +133,7 @@
     <ClInclude Include="..\..\include\utils\KeyedVector.h" />
     <ClInclude Include="..\..\include\utils\List.h" />
     <ClInclude Include="..\..\include\utils\Log.h" />
+    <ClInclude Include="..\..\include\utils\Looper.h" />
     <ClInclude Include="..\..\include\utils\Mutex.h" />
     <ClInclude Include="..\..\include\utils\RefBase.h" />
     <ClInclude Include="..\..\include\utils\RWLock.h" />
@@ -162,6 +163,7 @@
     <ClCompile Include="..\..\src\foundation\AString.cpp" />
     <ClCompile Include="..\..\src\foundation\hexdump.cpp" />
     <ClCompile Include="..\..\src\utils\Log.cpp" />
+    <ClCompile Include="..\..\src\utils\Looper.cpp" />
     <ClCompile Include="..\..\src\utils\RefBase.cpp" />
     <ClCompile Include="..\..\src\utils\SharedBuffer.cpp" />
     <ClCompile Include="..\..\src\utils\Threads.cpp" />

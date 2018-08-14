@@ -153,6 +153,9 @@
     <ClInclude Include="..\..\include\cutils\uio.h">
       <Filter>include\cutils</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\include\utils\Looper.h">
+      <Filter>include\utils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\src\utils\RefBase.cpp">
@@ -214,6 +217,9 @@
     </ClCompile>
     <ClCompile Include="..\..\src\foundation\AHandler.cpp">
       <Filter>src\foundation</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\utils\Looper.cpp">
+      <Filter>src\utils</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
