@@ -154,6 +154,15 @@ status_t ALooper::stop() {
     return OK;
 }
 
+void ALooper::sendMessage(const sp<AMessage> &msg, int64_t delayUs) {
+    post(msg, delayUs);
+}
+
+void ALooper::clearMessage() {
+    Mutex::Autolock autoLock(mLock);
+    mEventQueue.clear();
+}
+
 void ALooper::post(const sp<AMessage> &msg, int64_t delayUs) {
     Mutex::Autolock autoLock(mLock);
 

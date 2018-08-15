@@ -53,6 +53,10 @@ struct ALooper : public RefBase {
 
     static int64_t GetNowUs();
 
+    void sendMessage(const sp<AMessage> &msg, int64_t delayUs);
+
+    void clearMessage();
+
 protected:
     virtual ~ALooper();
 
